@@ -41,7 +41,7 @@ Follow these steps to set up and run the WebSocket Chat Application on your loca
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/websocket-chat-app.git
+   git clone https://github.com/delafuentej/webSockets_chatApp.git
    ```
 
 2. Navigate into the project directory:
