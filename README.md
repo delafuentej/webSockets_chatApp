@@ -56,8 +56,8 @@ Follow these steps to set up and run the WebSocket Chat Application on your loca
 
 
 4. Run the developer server:
-   ```bash
-  npm run dev
+  ```bash
+   npm run dev
    ```
 
 
