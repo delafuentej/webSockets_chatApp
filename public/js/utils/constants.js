@@ -1,4 +1,4 @@
-const PORT = 1981;
+const PORT = 1010;
 
 const CLIENT = {
   MESSAGE: {

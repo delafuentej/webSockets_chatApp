@@ -122,15 +122,16 @@ form {
   position: relative;
   background-color: linear-gradient(to bottom, #fafcf9 0%, #b2b4b2 100%);
   color: black;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+ 
 }
 .receiving .message::after{
   content: '✔';
   position: absolute;
   top: 50%; 
-  right: 10px; 
+  right: 1%; 
   color: #06f906;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .sending {
