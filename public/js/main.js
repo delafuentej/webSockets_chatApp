@@ -27,6 +27,19 @@ const {CLIENT, SERVER, PORT} = CONSTANTS;
     //const { CLIENT } = require('./utils/constants.js');
     const messageBox = document.querySelector('#messageBox');//input
     const messageForm = document.querySelector('#messageForm');//form
+    const sendButton = document.querySelector('#send');// send button
+
+
+
+    messageBox.addEventListener('input', () => {
+      // Si hay texto en el campo de entrada, activa el botón
+      if (messageBox.value.trim().length > 0) {
+        sendButton.disabled = false; 
+        
+      } else {
+        sendButton.disabled = true; // Deshabilita el botón
+      }
+    });
       
     // Event handler when the client enters a message
     //This event handler will be called each time the user submits a message. 
@@ -38,8 +51,10 @@ const {CLIENT, SERVER, PORT} = CONSTANTS;
       const message = messageBox.value.trim();
       // Render the sent message on the client as your own and reset the messageBox
       if (message) {
+      
         showMessageSent(message);
         sendMessageToServer(message);
+          sendButton.disabled = true;
         messageBox.value = '';
       }
  

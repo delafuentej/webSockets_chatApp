@@ -1,13 +1,51 @@
 html, body {
   height: 100%;
+  background-color: rgb(66,80,80);
+
 }
 
 body {
-  font-family: "Apercu",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content:flex-start;
   align-items: center;
+  font-family: "Apercu",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  color: white;
   padding: 0% 10%;
+}
+
+#logo {
+  margin-top:5%;
+  width: 100px;
+  height: 100px;
+  background-color: #0085D1;
+  border-radius: 15px; /* Mantiene la imagen redonda */
+  position: relative; /* Necesario para posicionar el triángulo relativo a la imagen */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+  border: 2px solid #f0f0f0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+}
+
+#logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen al contenedor */
+}
+
+#logo::before {
+  width: 0;
+  height: 0;
+  content: '';
+  position: fixed;
+  bottom: -10px; /* Posiciona el triángulo debajo del logo */
+  left: 20px; /* Centra el triángulo horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado */
+  border-width: 10px 10px 0 10px; /* Tamaño del triángulo */
+  border-style: solid;
+  border-color: #0085D1 transparent transparent transparent; /* Color l triángulo */
 }
 
 .chat {
@@ -19,9 +57,13 @@ body {
   padding: 10px;
   overflow-y: scroll;
   max-height: calc(100% - 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 form {
+  
   flex-shrink: 0;
   display: flex;
   width: 100%;
@@ -31,18 +73,28 @@ form {
   padding: 10px; 
   margin: 10px; 
   border-radius: 5px;
-  border-style: solid;
+  border: 2px solid rgb(66,80,80); 
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 #send { 
   margin: 10px 0px;
-  background: #0085D1;
+  background: #4dd611;
   color: white;
   border-radius: 5px;
-  border-style: none;
   padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); 
+  border: 2px solid #f0f0f0; 
 }
 
-
+#send:disabled {
+  background: rgb(66,80,80); /* Color de fondo gris */
+  cursor: not-allowed; /* Cambia el cursor */
+  box-shadow: none; /* Elimina la sombra */
+}
+#send:not([disabled]) {
+  cursor: pointer; /* Muestra el cursor de la mano */
+}
 
 .messages {
   display: flex;
@@ -55,26 +107,118 @@ form {
   margin-top: 5px;
   margin-bottom: 5px;
   display: inline-block;
+  color: black;
+  background-color: white;
 }
 
-.receiving {
+ .receiving {
   align-items: flex-start;
-}
+
+ 
+} 
 
 .receiving .message {
   margin-right: 25%;
-  background-color: #eee;
   position: relative;
+  background-color: linear-gradient(to bottom, #fafcf9 0%, #b2b4b2 100%);
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1)
+}
+.receiving .message::after{
+  content: '✔';
+  position: absolute;
+  top: 50%; 
+  right: 10px; 
+  color: #06f906;
+  font-size: 1.25rem;
 }
 
 .sending {
   align-items: flex-end;
+ 
 }
 
+
 .sending .message {
-  color: white;
-  margin-left: 25%;
-  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
-  background-attachment: fixed;
+  color: rgb(66,80,80); 
+  margin-left: 25%; 
+  background: linear-gradient(to bottom, #fafcf9 0%, #b2b4b2 100%); 
+  border-radius: 12px;
+  padding: 0.75em 1em; /* Espaciado interno */
+  line-height: 1.4em; /* Altura de línea para mejorar legibilidad */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra elegante */
   position: relative;
+  display: inline-block;
+  background-color: #f7f9fa; /* Color de fondo neutro */
+  font-family: Arial, sans-serif; 
+  font-weight: bold;
+  font-size: 1.1rem;
+  /* Tipografía más moderna */
+}
+.sending .message::after{
+  content: '';
+  position: absolute;
+  top: 100%; /* Coloca la punta debajo del mensaje */
+  right: 10px; /* Ajusta la posición horizontal del triángulo */
+  border-width: 8px; /* Tamaño del triángulo */
+  border-style: solid;
+  border-color: #f7f9fa transparent transparent transparent; /* Color del triángulo */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    padding: 2rem 3%;
+    font-size: 2.5vw;
+  }
+
+
+  .chat {
+    padding: 2vw;
+    max-height: calc(100% - 120px);
+  }
+  #logo {
+    width: 20vw;
+    height: 20vw;
+  }
+  #messageBox {
+    font-size: 0.9rem;
+  }
+
+  #send {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Estilos para pantallas muy pequeñas (como teléfonos) */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+    font-size: 3vw;
+  }
+
+  #logo {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #messageBox {
+    font-size: 0.8rem;
+  }
+
+  #send {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .chat {
+    padding: 2vw;
+    max-height: calc(100% - 120px);
+  }
 }
