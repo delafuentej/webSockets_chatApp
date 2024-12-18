@@ -51,12 +51,18 @@ Follow these steps to set up and run the WebSocket Chat Application on your loca
 
 3. Install dependencies:
    ```bash
-  npm install
+   npm install
    ```
-4. Run the developer server:
- ```bash
+4. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/websocket-chat-app.git
+   ```
+
+5. Run the developer server:
+   ```bash
   npm run dev
    ```
+
 
 ##  🪪 Contributing
 
