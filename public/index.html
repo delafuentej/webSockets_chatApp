@@ -5,23 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styles.css">
-  <link rel="icon" href="/public/favicon.ico" type="image/x-icon" />
-  <title>Chatroom-API</title>
+  <link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
+  <script src="https://kit.fontawesome.com/af5df58029.js" crossorigin="anonymous"></script>
+
+  <title>Chat-App</title>
 </head>
 <body>
 
   <img id="logo" src="./img/logo/chat-app.png" alt="logo">
-  <h2>
+  <h1>
    Chat-App
-  </h2>
+  </h1>
   <div class="chat">
     <!-- Messages will appear here -->
+
+    <div id="location-btn" class="fab-marker">
+      <i class="fa fa-map-marker-alt"></i>
+    </div>
+
+    <div id="photo-btn" class="fab-photo">
+      <i class="fa fa-camera"></i>
+    </div>
+
+
   </div>
+
+
+  
+     
   <form id="messageForm">
     <input type="text" id="messageBox" placeholder="Type your message here" />
     <button id="send" title="Send" disabled>➤</button>
   </form>
+
+
+
+
   
+ 
   <script  type="module" src="./js/main.js"> </script>
 
 </body>

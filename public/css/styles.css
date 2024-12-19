@@ -1,3 +1,9 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   background-color: rgb(66,80,80);
@@ -14,53 +20,90 @@ body {
   padding: 0% 10%;
 }
 
+
 #logo {
-  margin-top:5%;
-  width: 100px;
-  height: 100px;
+  margin: 15px;
+  width: 150px;
+  height: 150px;
   background-color: #0085D1;
   border-radius: 15px; /* Mantiene la imagen redonda */
-  position: relative; /* Necesario para posicionar el triángulo relativo a la imagen */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
   border: 2px solid #f0f0f0; 
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+ // overflow: hidden; 
+  object-fit: cover;
+
 }
 
-#logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ajusta la imagen al contenedor */
-}
-
-#logo::before {
-  width: 0;
-  height: 0;
-  content: '';
-  position: fixed;
-  bottom: -10px; /* Posiciona el triángulo debajo del logo */
-  left: 20px; /* Centra el triángulo horizontalmente */
-  transform: translateX(-50%); /* Ajusta el centrado */
-  border-width: 10px 10px 0 10px; /* Tamaño del triángulo */
-  border-style: solid;
-  border-color: #0085D1 transparent transparent transparent; /* Color l triángulo */
+h1{
+ margin: 15px;
+ font-size: 1.5em;
 }
 
 .chat {
+
+  background-image: url("../img/bg/chat-bg.png");
+  background-position: top;
+  background-origin: border-box;
+  background-size: cover;
+  background-repeat:round;
   flex: 1 0 auto;
   width: 100%;
-  border: solid 1px #EEE;
-  display: flex;
-  flex-direction: column;
   padding: 10px;
-  overflow-y: scroll;
-  max-height: calc(100% - 150px);
+  /* border: solid 1px #EEE; */
+  border: 2px solid rgba(255, 255, 255, 0.6); /* Blanco translúcido */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombras para efecto 3D */
   display: flex;
   flex-direction: column;
+  outline: 0px solid transparent;
+  overflow-y: scroll; 
+  scrollbar-color:  #06f906 transparent;
+  outline: 1px solid slategrey;
+  max-height: calc(100% - 150px);
   align-items: stretch;
+  position: relative;
 }
+
+
+.fab-marker {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(66,80,80);
+  border-radius: 50%;
+  box-shadow: 1px 2px 6px 0 #06f906;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+  line-height: 55px;
+  position: absolute;;
+  left: 20px;
+  bottom: 15px;
+}
+
+
+.fab-photo {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(66,80,80);
+  border-radius: 50%;
+  box-shadow: 1px 2px 6px 0 #06f906;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+  line-height: 55px;
+  position: absolute;
+  left: 80px;
+  bottom: 15px;
+}
+
+.fa-map-marker-alt, .fa-camera{
+  color: white;
+  font-size:25px;
+}
+
+
+
 
 form {
   
@@ -68,14 +111,19 @@ form {
   display: flex;
   width: 100%;
 }
+
 #messageBox { 
   flex-grow: 1; 
   padding: 10px; 
   margin: 10px; 
   border-radius: 5px;
   border: 2px solid rgb(66,80,80); 
-  color: black;
+  cursor:pointer;
+  color: rgb(66,80,80);
+  font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline:2px solid  #06f906;
+ 
 }
 #send { 
   margin: 10px 0px;
@@ -103,49 +151,34 @@ form {
 
 .message {
   border-radius: 20px;
-  padding: 8px 15px;
+  padding: 0.5em 0.75em;
   margin-top: 5px;
   margin-bottom: 5px;
   display: inline-block;
   color: black;
   background-color: white;
+  width:40%:
 }
 
  .receiving {
   align-items: flex-start;
-
- 
 } 
 
-.receiving .message {
-  margin-right: 25%;
-  position: relative;
-  background-color: linear-gradient(to bottom, #fafcf9 0%, #b2b4b2 100%);
-  color: black;
+.new-user .message {
+  margin: 0 auto;
+  text-align: center;
+  font-style: italic;
+  background-color: #fffbe6; /* Amarillo claro */
+  color: #7d7d7d; /* Gris oscuro */
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
- 
-}
-.receiving .message::after{
-  content: '✔';
-  position: absolute;
-  top: 50%; 
-  right: 1%; 
-  color: #06f906;
-  font-size: 1.5rem;
 }
 
-.sending {
-  align-items: flex-end;
- 
-}
-
-
-.sending .message {
+.receiving .message {
   color: rgb(66,80,80); 
-  margin-left: 25%; 
+  margin-right: 25%; 
   background: linear-gradient(to bottom, #fafcf9 0%, #b2b4b2 100%); 
   border-radius: 12px;
-  padding: 0.75em 1em; /* Espaciado interno */
   line-height: 1.4em; /* Altura de línea para mejorar legibilidad */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra elegante */
   position: relative;
@@ -153,7 +186,47 @@ form {
   background-color: #f7f9fa; /* Color de fondo neutro */
   font-family: Arial, sans-serif; 
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
+
+}
+
+ .receiving .message::before{
+  content: '✔';
+  position: absolute;
+  top: 50%; 
+  right: 1%; 
+  color: #06f906;
+  font-size: 1.15rem;
+} 
+.receiving .message::after{
+  content: '';
+  position: absolute;
+  top: 100%; /* Coloca la punta debajo del mensaje */
+  left: 10px; /* Ajusta la posición horizontal del triángulo */
+  border-width: 8px; /* Tamaño del triángulo */
+  border-style: solid;
+  border-color: #b2b4b2 transparent transparent transparent; /* Color del triángulo */
+} 
+
+
+.sending {
+  align-items: flex-end;
+ 
+}
+
+.sending .message {
+  color: rgb(66,80,80);
+  margin-left: 25%; 
+  background: linear-gradient(to bottom, #06f906 50%,  #06f906 100%); 
+  border-radius: 12px;
+  line-height: 1.4em; /* Altura de línea para mejorar legibilidad */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+  position: relative;
+  display: inline-block;
+  background-color: #f7f9fa; /* Color de fondo neutro */
+  font-family: Arial, sans-serif; 
+  font-weight: bold;
+  font-size: 0.9rem;
   /* Tipografía más moderna */
 }
 .sending .message::after{
@@ -163,8 +236,10 @@ form {
   right: 10px; /* Ajusta la posición horizontal del triángulo */
   border-width: 8px; /* Tamaño del triángulo */
   border-style: solid;
-  border-color: #f7f9fa transparent transparent transparent; /* Color del triángulo */
+  border-color:  #06f906 transparent transparent transparent; /* Color del triángulo */
 }
+
+
 
 /* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
@@ -173,14 +248,17 @@ form {
     font-size: 2.5vw;
   }
 
-
+  h1 {
+    font-size: 25px;
+    text-align: center;
+  }
   .chat {
-    padding: 2vw;
+    //padding: 2vw;
     max-height: calc(100% - 120px);
   }
   #logo {
-    width: 20vw;
-    height: 20vw;
+    width: 100px;
+    height: 100px;
   }
   #messageBox {
     font-size: 0.9rem;
@@ -200,12 +278,12 @@ form {
   }
 
   #logo {
-    width: 25vw;
-    height: 25vw;
+    width: 80px;
+    height: 80px;
   }
 
-  h2 {
-    font-size: 20px;
+  h1 {
+    font-size:25px;
     text-align: center;
   }
 
@@ -219,7 +297,7 @@ form {
   }
 
   .chat {
-    padding: 2vw;
+   // padding: 2vw;
     max-height: calc(100% - 120px);
   }
 }

@@ -182,8 +182,9 @@ const {CLIENT, SERVER, PORT} = CONSTANTS;
     function showMessageSent(message) { 
       showNewMessage(message, 'sending'); 
     }
-    function showMessageReceived(message) {
-      showNewMessage(message, 'receiving'); 
+    function showMessageReceived(message, isNewUserMsg = false) {
+      const className = isNewUserMsg ? 'receiving new-user' : 'receiving'
+      showNewMessage(message, className); 
     }
     
     // This function displays a message in the messages container node. 
@@ -196,7 +197,7 @@ const {CLIENT, SERVER, PORT} = CONSTANTS;
       
       // Wrap the text node in a message element
       const messageNode = document.createElement('div');
-      messageNode.className = 'messages ' + className;
+      messageNode.className = `messages ${className}`;
       messageNode.appendChild(textNode);
       
       // Append the messageNode to the messages container element
